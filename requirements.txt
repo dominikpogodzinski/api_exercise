@@ -1,3 +1,4 @@
 django==3.0.3
 djangorestframework==3.12.2
 django-rest-swagger
+psycopg2-binary
