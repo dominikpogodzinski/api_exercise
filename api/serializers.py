@@ -7,6 +7,11 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'password')
+        extra_kwargs = {'password': {'required': True, 'write_only': True}}
+
+    def create(self, validated_data):
+        user = User.objects.create_user(**validated_data)
+        return user
 
 
 class DishSerializer(serializers.HyperlinkedModelSerializer):
@@ -16,7 +21,7 @@ class DishSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class MenuSerializer(serializers.HyperlinkedModelSerializer):
-    dishes = DishSerializer(many=True)
+    dishes = DishSerializer(many=True, read_only=True)
 
     class Meta:
         model = Menu
