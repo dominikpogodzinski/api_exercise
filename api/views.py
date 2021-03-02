@@ -1,8 +1,10 @@
+from django.shortcuts import get_object_or_404
+
 from .models import Menu, Dish
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import DjangoModelPermissions
+from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from .serializers import MenuSerializer, DishSerializer, UserSerializer
 from django.contrib.auth.models import User
 
@@ -15,15 +17,18 @@ class UserViewSet(viewsets.ModelViewSet):
 class MenuViewSet(viewsets.ModelViewSet):
     serializer_class = MenuSerializer
     authentication_classes = (TokenAuthentication, )
-    # permission_classes = (DjangoModelPermissions, )
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
+    filter_backends = (filters.OrderingFilter, )
+    ordering_fields = ('name', )
 
+    # @property
     def get_queryset(self):
-        menu_name = self.request.guery_params.get('menu_name', None)
-        add_date = self.request.guery_params.get('add_date', None)
+        name = self.request.query_params.get('name', None)
+        add_date = self.request.query_params.get('add_date', None)
         update_date = self.request.query_params.get('update_date', None)
 
-        if menu_name:
-            menu = Menu.objects.filter(menu_name__icontains=menu_name)
+        if name:
+            menu = Menu.objects.filter(name__icontains=name)
         else:
             if add_date or update_date:
                 menu = Menu.objects.filter(add_date=add_date, update_date=update_date)
@@ -41,5 +46,3 @@ class MenuViewSet(viewsets.ModelViewSet):
 class DishViewSet(viewsets.ModelViewSet):
     queryset = Dish.objects.all()
     serializer_class = DishSerializer
-    authentication_classes = (TokenAuthentication, )
-    # permission_classes = (DjangoModelPermissions, )
