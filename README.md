@@ -1,3 +1,36 @@
+##EMENU - ONLINE RESTAURANT CARD SERVICE
+> The project serves the possibility of browsing cards (menus) with the possibility of adding dishes along with their photos. 
+> The service allows us to filter cards through three parameters "name", "add_date", "update_date" 
+> and sorting this card using the parameters "name" and "dishes_counter".
+> One of the tasks is to automatically send emails to registered users with newly added dishes and dishes
+> which were modified the previous day.
+> The project includes a Django Admin panel for content management. 
+
+###Table of content
+ - Technology stack
+ - Instalation
+ - Development
+ - Docker
+ - Test
+ - Before commit ;)
+
+###Technology Stack
+ - Python 3.7
+ - Django 3.0.3
+ - Django Rest Framework 3.12.2
+ - PostgresSql 12.4
+
+###Instalation
+Type in cmd
+```
+git clone https://github.com/dominikpogodzinski/api_exercise.git
+```
+
+Install requirements by 
+```
+pip install -r requirements.txt
+```
+
 ### Development
 ```
 * create local environment
@@ -13,7 +46,7 @@
 $ docker-compose up
 ```
 
-### Docekr end
+### Docker down
 ```
 $ docker-compose down
 ```

@@ -15,7 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class MenuViewSet(viewsets.ModelViewSet):
-    queryset = Menu.objects.annotate(dish=Count("dishes")).filter(dish__gt=1)
+    queryset = Menu.objects.annotate(dish=Count("dishes")).filter(dish__gt=0)
     serializer_class = MenuSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)

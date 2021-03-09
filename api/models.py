@@ -17,7 +17,7 @@ class Dish(models.Model):
     price = models.PositiveSmallIntegerField()
     preparation_time = models.PositiveSmallIntegerField()
     added_on = models.DateField(auto_now_add=False)
-    update_date = models.DateField(auto_now=True)
+    update_on = models.DateField(auto_now=True)
     is_vege = models.BooleanField(default=False)
     image = models.ImageField(upload_to="images/", blank=True, null=True)
 
@@ -29,7 +29,7 @@ class Menu(models.Model):
     name = models.CharField(max_length=50, unique=True)
     description = models.TextField(max_length=256, null=True, blank=True)
     added_on = models.DateField(auto_now_add=False)
-    update_date = models.DateField(auto_now=True)
+    update_on = models.DateField(auto_now=True)
     dishes = models.ManyToManyField(Dish, related_name="dishes", blank=True)
 
     def __str__(self):
