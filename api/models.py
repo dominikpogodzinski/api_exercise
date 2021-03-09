@@ -12,21 +12,22 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 
 class Dish(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.TextField(max_length=256)
-    price = models.IntegerField()
-    preparation_time = models.IntegerField()
+    name = models.CharField(max_length=50, unique=True)
+    description = models.TextField(max_length=256, null=True, blank=True)
+    price = models.PositiveSmallIntegerField()
+    preparation_time = models.PositiveSmallIntegerField()
     add_date = models.DateField(auto_now_add=False)
     update_date = models.DateField(auto_now=True)
     is_vege = models.BooleanField(default=False)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
         return self.name
 
 
 class Menu(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.TextField(max_length=256)
+    name = models.CharField(max_length=50, unique=True)
+    description = models.TextField(max_length=256, null=True, blank=True)
     add_date = models.DateField(auto_now_add=False)
     update_date = models.DateField(auto_now=True)
     dishes = models.ManyToManyField(Dish, related_name='dishes', blank=True)
@@ -36,5 +37,3 @@ class Menu(models.Model):
 
     def menu_name(self):
         return self.name
-
-

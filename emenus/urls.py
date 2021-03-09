@@ -1,3 +1,4 @@
+import debug_toolbar
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
@@ -16,5 +17,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('docs/', schema_view),
     path('api-token-auth/', obtain_auth_token),
+    path('__debug__/', include(debug_toolbar.urls)),
     url(r'^', include(router.urls)),
 ]

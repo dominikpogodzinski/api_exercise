@@ -1,4 +1,7 @@
 django==3.0.3
 djangorestframework==3.12.2
 django-rest-swagger
+django-debug-toolbar
+django-filter
 psycopg2-binary
+Pillow

@@ -20,7 +20,6 @@ python -m pip install --upgrade pip
 python -m pip install -I -r requirements.txt
 
 echo "Migrating..."
-./manage.py makemigrations
 ./manage.py migrate
 
 echo "-------------------------------------"

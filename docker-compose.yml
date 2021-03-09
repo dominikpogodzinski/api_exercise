@@ -1,27 +1,8 @@
-# Wejście na dockera z PHP docker exec -i -t php /bin/bash
-# Wersja 2 pozwala na przekazywanie argumentów
-# Aliasy https://docs.docker.com/compose/compose-file/#aliases
-
-version: '3'
-
 services:
-#  vcb-redis:
-#    image: 'bitnami/redis:latest'
-#    container_name: vcb_redis.local
-#    environment:
-#      - ALLOW_EMPTY_PASSWORD=yes
-#    labels:
-#      kompose.service.type: nodeport
-#    ports:
-#      - 6379:6379
-#    volumes:
-#      - redis_data:/bitnami/redis
-#    networks:
-#      - esnet
 
   cs-db:
     container_name: cs_postgres.local
-    image: postgres:9.6
+    image: postgres:13.1
     environment:
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=root
@@ -44,7 +25,6 @@ services:
       - DATABASE_HOST=cs_postgres.local
     links:
       - cs-db
-#      - vcb-redis
     networks:
       - esnet
 
@@ -53,8 +33,6 @@ volumes:
     driver: local
   esdata2:
     driver: local
-#  redis_data:
-#    driver: local
 
 networks:
   esnet:

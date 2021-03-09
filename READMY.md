@@ -18,16 +18,6 @@ $ docker-compose up
 $ docker-compose down
 ```
 
-### Entry to virtual machine
-(musisz być w katalogu projektu)
-```
-$ docker-compose exec cs-web /bin/bash
-```
-
-### Testing
-```
-$ docker-compose exec cs-web ./test.sh
-```
 
 Before you send the code to the server, please runt this tests
 ```
