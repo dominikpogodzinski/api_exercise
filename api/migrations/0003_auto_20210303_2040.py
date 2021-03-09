@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0002_menu_dishes'),
+        ("api", "0002_menu_dishes"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='dish',
-            name='preparation_time',
+            model_name="dish",
+            name="preparation_time",
             field=models.PositiveSmallIntegerField(),
         ),
         migrations.AlterField(
-            model_name='dish',
-            name='price',
+            model_name="dish",
+            name="price",
             field=models.PositiveSmallIntegerField(),
         ),
     ]

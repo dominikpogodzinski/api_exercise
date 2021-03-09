@@ -7,31 +7,30 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Dish',
+            name="Dish",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('description', models.TextField(max_length=256)),
-                ('price', models.IntegerField()),
-                ('preparation_time', models.IntegerField()),
-                ('add_date', models.DateField()),
-                ('update_date', models.DateField(auto_now=True)),
-                ('is_vege', models.BooleanField(default=False)),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("name", models.CharField(max_length=50)),
+                ("description", models.TextField(max_length=256)),
+                ("price", models.IntegerField()),
+                ("preparation_time", models.IntegerField()),
+                ("add_date", models.DateField()),
+                ("update_date", models.DateField(auto_now=True)),
+                ("is_vege", models.BooleanField(default=False)),
             ],
         ),
         migrations.CreateModel(
-            name='Menu',
+            name="Menu",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('description', models.TextField(max_length=256)),
-                ('add_date', models.DateField()),
-                ('update_date', models.DateField(auto_now=True)),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("name", models.CharField(max_length=50)),
+                ("description", models.TextField(max_length=256)),
+                ("add_date", models.DateField()),
+                ("update_date", models.DateField(auto_now=True)),
             ],
         ),
     ]
