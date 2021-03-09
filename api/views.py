@@ -15,20 +15,13 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class MenuViewSet(viewsets.ModelViewSet):
+    queryset = Menu.objects.annotate(dish=Count('dishes')).filter(dish__gt=1)
     serializer_class = MenuSerializer
     authentication_classes = (TokenAuthentication, )
     permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
     filter_backends = (DjangoFilterBackend, filters.OrderingFilter, )
     filter_fields = ('name', 'add_date', 'update_date')
     ordering_fields = ('name', )
-    # Menu.objects.filter(dishes__name='dishes').count()
-    # qs = Menu.objects.filter(dishes=dishes).count()
-    # queryset = Menu.objects.filter(dishes=True).count()
-
-    def get_queryset(self):
-        # dish_counter = Menu.objects.annotate(num_dishes=Count('dishes'))
-        queryset = Menu.objects.annotate(dish=Count('dishes')).filter(dish__gt=1)
-        return queryset
 
 
 class DishViewSet(viewsets.ModelViewSet):
