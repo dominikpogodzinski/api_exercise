@@ -18,7 +18,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class DishSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Dish
-        fields = ["id", "name", "description", "price", "preparation_time", "add_date", "update_date", "is_vege"]
+        fields = ["id", "name", "description", "price", "preparation_time", "added_on", "update_on", "is_vege"]
 
 
 class MenuSerializer(serializers.HyperlinkedModelSerializer):
@@ -26,4 +26,4 @@ class MenuSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Menu
-        fields = ["id", "menu_name", "description", "add_date", "update_date", "dishes"]
+        fields = ["id", "menu_name", "description", "added_on", "update_on", "dishes"]

@@ -84,7 +84,7 @@ WSGI_APPLICATION = "emenus.wsgi.application"
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
-    "Deafault_PERMISSION_CLASSES": ("rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly",),
+    "Deafault_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
 }
 
 # Database
