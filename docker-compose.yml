@@ -1,38 +1,23 @@
+version: '3.7'
 services:
-
-  cs-db:
-    container_name: cs_postgres.local
+  cs_postgres:
     image: postgres:12.4-alpine
-    environment:
-      - POSTGRES_PASSWORD=root
-      - POSTGRES_USER=root
     ports:
       - 5432:5432
     volumes:
       - ./database/postgres:/var/lib/postgresql/data:delegated
-    networks:
-      - esnet
+    restart: always
+    env_file:
+      - ./.env
 
-  cs-web:
+  api_exercise:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
       - 8000:8000
-    environment:
-      - DEBUG=1
-      - DATABASE_HOST=cs_postgres.local
-    links:
-      - cs-db
-    networks:
-      - esnet
-
-volumes:
-  esdata1:
-    driver: local
-  esdata2:
-    driver: local
-
-networks:
-  esnet:
+    env_file:
+      - .env
+    depends_on:
+      - cs_postgres

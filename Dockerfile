@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.7 alpine
+FROM python:3.7
 RUN mkdir /code
 WORKDIR /code
 
@@ -8,6 +8,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements.txt /code/requirements.txt
+COPY ./env.dist /.env
 
 # copy project
 ADD entrypoint.sh /

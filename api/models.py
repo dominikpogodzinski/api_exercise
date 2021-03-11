@@ -26,14 +26,8 @@ class Dish(models.Model):
 
 
 class Menu(models.Model):
-    name = models.CharField(max_length=50, unique=True)
+    title = models.CharField(max_length=50, unique=True)
     description = models.TextField(max_length=256, null=True, blank=True)
     added_on = models.DateField(auto_now_add=False)
     update_on = models.DateField(auto_now=True)
     dishes = models.ManyToManyField(Dish, related_name="dishes", blank=True)
-
-    def __str__(self):
-        return self.menu_name()
-
-    def menu_name(self):
-        return self.name

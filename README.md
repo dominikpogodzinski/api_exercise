@@ -38,7 +38,7 @@ pip install -r requirements.txt
 ### Development
 ```
 * create local environment
-* copy () to ()
+* copy env.dist to .env in main source of ypur projects
 * run docker-compose up to start PostgreSQL database
 * run python manage.py migrate to create your database structure
 * run python manage.py createsuperuser to create super user in database
@@ -53,6 +53,11 @@ $ docker-compose up
 ### Docker down
 ```
 $ docker-compose down
+```
+
+### Docker build
+```
+docker-compose up --build
 ```
 
 ###Test

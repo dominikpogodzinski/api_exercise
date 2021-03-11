@@ -3,7 +3,6 @@ from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, viewsets
 from rest_framework.authentication import TokenAuthentication
-# from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.views.generic.edit import DeleteView
 
@@ -26,8 +25,8 @@ class MenuViewSet(viewsets.ModelViewSet):
         DjangoFilterBackend,
         filters.OrderingFilter,
     )
-    filter_fields = ("name", "added_on", "update_on")
-    ordering_fields = ("name",)
+    filter_fields = ("title", "added_on", "update_on")
+    ordering_fields = ("title",)
 
 
 class DishViewSet(viewsets.ModelViewSet):
